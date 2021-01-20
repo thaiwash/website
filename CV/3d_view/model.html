@@ -4,7 +4,7 @@
 
     <title>3d face</title>
 
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="./WebGL 3D Model Viewer Using three.js_files/three.js.lataus"></script>
@@ -71,19 +71,19 @@
         init();
         animate();
 
-		
+
 		var angle = 0;
 
-		
-		var radius = 500; 
+
+		var radius = 500;
 
 		var face;
 
-		
+
         function init() {
 			function setPosition() {
-				//console.log(angle) 
-				// Use Math.cos and Math.sin to set camera X and Z values based on angle. 
+				//console.log(angle)
+				// Use Math.cos and Math.sin to set camera X and Z values based on angle.
 				//camera.position.x = -0.9081311694992641;
 				//camera.position.y = 100.00000477805605;
 				//camera.position.z = -4.774770425719742;
@@ -91,7 +91,7 @@
 				camera.position.y = 200.03937408544067;
 				camera.position.z = -0.0003000066522493772;
 				//angle += 0.1;
-				
+
 			}
             container = document.createElement('div');
             document.body.appendChild(container);
@@ -100,14 +100,14 @@
 
             camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1000);
             camera.position.z = 300;
-			
+
 			setPosition();
-			
+
 			camera.rotation.y = 90 * Math.PI / 180;
 			camera.rotation.x = 90 * Math.PI / 180;
 			camera.rotation.z = 90 * Math.PI / 180;
 			//camera.position.z = 3
-			
+
             /* Scene */
 
             scene = new THREE.Scene();
@@ -132,7 +132,7 @@
             mtlLoader.setPath('assets/');
             mtlLoader.load('Taivas.MTL', function (materials) {
 			//mtlLoader.load('female-croupier-2013-03-26.mtl', function(materials) {
-			
+
                 materials.preload();
 
 				console.log(materials)
@@ -223,13 +223,16 @@
         }
 
         function render() {
-face.rotation.z += 0.01
+          if(typeof face !=="undefined")) {
+
+              face.rotation.z += 0.01
+          }
             renderer.render(scene, camera);
 
         }
 
-		
-		
+
+
 		var cameraOrginX = 0, cameraOrginY = 0, cameraOrginZ = 0;
 var cameraEndX = 0, cameraEndY = -707, cameraEndZ = 707;
 var angle = 1;
@@ -272,7 +275,7 @@ function onDocumentKeyDown(event){
     var dVert = cosTheta * (cameraEndZ-cameraOrginZ);
 
     cameraEndY = aVert - bVert + cameraOrginY;
-    cameraEndZ = cVert + dVert + cameraOrginZ; 
+    cameraEndZ = cVert + dVert + cameraOrginZ;
 
     camera.position.x = cameraOrginX + cameraEndX;
     camera.position.y = cameraOrginY + cameraEndY;
